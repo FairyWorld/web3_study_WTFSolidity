@@ -14,9 +14,9 @@
 
 如果对 EVM 汇编和 Solidity 数据表示不熟悉，请参阅本系列之前的文章以了解更多信息：
 
-* [深入以太坊虚拟机 Part1 — 汇编与字节码](https://github.com/AmazingAng/WTFSolidity/blob/main/Topics/Translation/DiveEVM2017/DiveEVM2017-Part1.md)
-* [深入以太坊虚拟机 Part2 — 固定长度数据类型的表示 ](https://github.com/AmazingAng/WTFSolidity/blob/main/Topics/Translation/DiveEVM2017/DiveEVM2017-Part2.md)
-* [深入以太坊虚拟机 Part3 — 动态数据类型的表示](https://github.com/AmazingAng/WTFSolidity/blob/main/Topics/Translation/DiveEVM2017/DiveEVM2017-Part3.md)
+* [深入以太坊虚拟机 Part1 — 汇编与字节码](https://github.com/AmazingAng/WTF-Solidity/blob/main/Topics/Translation/DiveEVM2017/DiveEVM2017-Part1.md)
+* [深入以太坊虚拟机 Part2 — 固定长度数据类型的表示 ](https://github.com/AmazingAng/WTF-Solidity/blob/main/Topics/Translation/DiveEVM2017/DiveEVM2017-Part2.md)
+* [深入以太坊虚拟机 Part3 — 动态数据类型的表示](https://github.com/AmazingAng/WTF-Solidity/blob/main/Topics/Translation/DiveEVM2017/DiveEVM2017-Part3.md)
 
 ## Contract Transaction
 
@@ -54,9 +54,9 @@ contract C {
 
 ```shell
 # The method selector (4 bytes)
-0xee919d5
+0xee919d50
 # The 1st argument (32 bytes)
-00000000000000000000000000000000000000000000000000000000000000001
+0000000000000000000000000000000000000000000000000000000000000001
 ```
 
 前四个字节是方法选择器(method selector)。其余的输入数据是 32 字节的块的方法参数。在这个例子中，只有 1 个参数，即值 `0x1`​。

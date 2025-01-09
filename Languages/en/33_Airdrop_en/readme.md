@@ -16,7 +16,7 @@ Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science) | [@WTFAcademy_](http
 
 Community: [Discord](https://discord.gg/5akcruXrsk)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website wtf.academy](https://wtf.academy)
 
-Codes and tutorials are open source on GitHub: [github.com/AmazingAng/WTFSolidity](https://github.com/AmazingAng/WTFSolidity)
+Codes and tutorials are open source on GitHub: [github.com/AmazingAng/WTF-Solidity](https://github.com/AmazingAng/WTF-Solidity)
 
 -----
 
@@ -48,7 +48,7 @@ The logic of the airdrop contract is simple: by using a loop, a single transacti
    - `_addresses`: Array of user addresses receiving the airdrop (`address[]` type)
    - `_amounts`: Array of airdrop amounts that correspond to the quantity of each address in `_addresses` (`uint[]` type)
 
-   This function contains `2` checks: The first `require` checks if the length of `_addresses` array is equal to the length of `_amounts` array . The second `require` checks if the authorization limit of the airdrop contract is greater than the total amount of tokens to be airdropped.
+   This function contains `2` checks: The first `require` checks if the length of the `_addresses` array is equal to the length of the `_amounts` array. The second `require` checks if the authorization limit of the airdrop contract is greater than the total amount of tokens to be airdropped.
 
 ```solidity
 /// @notice Transfer ERC20 tokens to multiple addresses, authorization is required before use

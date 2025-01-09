@@ -16,11 +16,11 @@ Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science) | [@WTFAcademy_](http
 
 Community: [Discord](https://discord.gg/5akcruXrsk)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website wtf.academy](https://wtf.academy)
 
-Codes and tutorials are open source on GitHub: [github.com/AmazingAng/WTFSolidity](https://github.com/AmazingAng/WTFSolidity)
+Codes and tutorials are open source on GitHub: [github.com/AmazingAng/WTF-Solidity](https://github.com/AmazingAng/WTF-Solidity)
 
 ----
 
-In this lecture, I will introduce the Dutch Auction and explain how to issue a `NFT` using the `ERC721` standard through a simplified version of the `Azuki` Dutch Auction code.
+In this lecture, I will introduce the Dutch Auction and explain how to issue an `NFT` using the `ERC721` standard through a simplified version of the `Azuki` Dutch Auction code.
 
 ## Dutch Auction
 
@@ -42,10 +42,10 @@ The code is simplified based on the [code](https://etherscan.io/address/0xed5af3
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.21;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "https://github.com/AmazingAng/WTFSolidity/blob/main/34_ERC721/ERC721.sol";
+import "https://github.com/AmazingAng/WTF-Solidity/blob/main/34_ERC721/ERC721.sol";
 
 contract DutchAuction is Ownable, ERC721 {
 ```
@@ -55,14 +55,14 @@ contract DutchAuction is Ownable, ERC721 {
 There are a total of `9` state variables in the contract, of which `6` are related to the auction. They are:
 
 - `COLLECTION_SIZE`: Total number of NFTs.
-- `AUCTION_START_PRICE`: Starting price of the Dutch auction, also the highest price.
+- `AUCTION_START_PRICE`: Starting price of the Dutch auction, is also the highest price.
 - `AUCTION_END_PRICE`: Ending price of the Dutch auction, also the lowest price/floor price.
 - `AUCTION_TIME`: Duration of the auction.
 - `AUCTION_DROP_INTERVAL`: Time interval when the price drops.
 - `auctionStartTime`: Starting time of the auction (blockchain timestamp, `block.timestamp`).
 
 ```solidity
-    uint256 public constant COLLECTOIN_SIZE = 10000; // Total number of NFTs 
+    uint256 public constant COLLECTION_SIZE = 10000; // Total number of NFTs 
     uint256 public constant AUCTION_START_PRICE = 1 ether; // Starting price (highest price)
     uint256 public constant AUCTION_END_PRICE = 0.1 ether; // End price (lowest price/floor price)
     uint256 public constant AUCTION_TIME = 10 minutes; // Auction duration. Set to 10 minutes for testing convenience
@@ -115,7 +115,7 @@ If `block.timestamp` is between the start and end times, the current decay price
 
 - User auctions and mints `NFT`: Users participate in a Dutch auction and mint `NFT` by calling the `auctionMint()` function to pay `ETH`.
 
-First, the function checks if the auction has started or if the number of `NFTs` has exceeded the limit. Then, the contract calculates the auction cost based on the number of minted `NFTs` and using the `getAuctionPrice()` function. It also checks if the user has enough `ETH` to participate. If the user has enough `ETH`, the contract mints `NFTs` and refunds any excess `ETH`. Otherwise, the transaction is reverted.
+First, the function checks if the auction has started or if the number of `NFTs` has exceeded the limit. Then, the contract calculates the auction cost based on the number of minted `NFTs` and uses the `getAuctionPrice()` function. It also checks if the user has enough `ETH` to participate. If the user has enough `ETH`, the contract mints `NFTs` and refunds any excess `ETH`. Otherwise, the transaction is reverted.
 
 ```solidity
     // the auction mint function
@@ -126,7 +126,7 @@ First, the function checks if the auction has started or if the number of `NFTs`
         "sale has not started yet"
         ); // checks if the start time of auction has been set and auction has started
         require(
-        totalSupply() + quantity <= COLLECTOIN_SIZE,
+        totalSupply() + quantity <= COLLECTION_SIZE,
         "not enough remaining reserved for auction to support desired mint amount"
         ); // checks if the number of NFTs has exceeded the limit
 
